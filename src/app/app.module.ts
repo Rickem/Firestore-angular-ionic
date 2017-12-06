@@ -6,6 +6,10 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { IonicStorageModule } from '@ionic/storage';
+import { Screenshot } from '@ionic-native/screenshot';
+import { Diagnostic } from '@ionic-native/diagnostic';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 import * as firebase from 'firebase';
 
 import { AngularFireAuthModule } from 'angularfire2/auth';
@@ -32,7 +36,24 @@ import { SupportPage } from '../pages/support/support';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
+import { PlatformService } from '../providers/platformService';
+import { AlertProvider } from '../providers/alert';
+import { DownloadFilesProvider } from '../providers/downloadFiles';
+import { AuthServiceProvider } from '../providers/auth/authService';
 
+
+import { OmangIdPipe } from '../pipes/textFormat';
+import { SearchPipe, TagSearchPipe } from '../pipes/search';
+import { DateComparePipe } from '../pipes/date';
+import { OrderByPipe } from '../pipes/sort';
+
+export const AllPipes = [
+  OmangIdPipe, SearchPipe, DateComparePipe, TagSearchPipe, OrderByPipe
+];
+
+export const AllService = [
+  PlatformService, AlertProvider, DownloadFilesProvider, AuthServiceProvider
+];
 
 var config = {
   apiKey: "AIzaSyB8SHm7JuPH3m13MlNjQNoKg9pKayrdvyU",
@@ -47,6 +68,7 @@ firebase.initializeApp(config);
 
 @NgModule({
   declarations: [
+    AllPipes,
     ConferenceApp,
     AboutPage,
     AccountPage,
@@ -118,6 +140,7 @@ firebase.initializeApp(config);
     UserData,
     InAppBrowser,
     SplashScreen,
+    AllService
   ]
 })
 export class AppModule { }
