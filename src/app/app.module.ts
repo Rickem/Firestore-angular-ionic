@@ -33,6 +33,7 @@ import { SpeakerListPage } from '../pages/speaker-list/speaker-list';
 import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
+import { ProductsListPage } from '../pages/products-list/products-list';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -72,6 +73,7 @@ firebase.initializeApp(config);
     ConferenceApp,
     AboutPage,
     AccountPage,
+    ProductsListPage,
     LoginPage,
     MapPage,
     PopoverPage,
@@ -120,6 +122,7 @@ firebase.initializeApp(config);
   entryComponents: [
     ConferenceApp,
     AboutPage,
+    ProductsListPage,
     AccountPage,
     LoginPage,
     MapPage,
