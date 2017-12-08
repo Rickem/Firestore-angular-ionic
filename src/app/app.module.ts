@@ -16,6 +16,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFirestoreModule, AngularFirestore } from 'angularfire2/firestore';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { CalendarModule } from "ion2-calendar";
 
 import { ConferenceApp } from './app.component';
 
@@ -34,6 +35,7 @@ import { TabsPage } from '../pages/tabs-page/tabs-page';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { SupportPage } from '../pages/support/support';
 import { ProductsListPage } from '../pages/products-list/products-list';
+import { MultiDateCalendarPage } from '../pages/multiDateCalendar/multiDateCalendar';
 
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
@@ -56,6 +58,11 @@ export const AllService = [
   PlatformService, AlertProvider, DownloadFilesProvider, AuthServiceProvider
 ];
 
+export const AllPages = [
+  AboutPage, AccountPage, ProductsListPage, LoginPage, MapPage,PopoverPage, SchedulePage, ScheduleFilterPage, SessionDetailPage,SignupPage,
+  SpeakerDetailPage,SpeakerListPage, TabsPage, TutorialPage, SupportPage, MultiDateCalendarPage
+];
+
 var config = {
   apiKey: "AIzaSyB8SHm7JuPH3m13MlNjQNoKg9pKayrdvyU",
   authDomain: "xaviers-connect.firebaseapp.com",
@@ -71,26 +78,13 @@ firebase.initializeApp(config);
   declarations: [
     AllPipes,
     ConferenceApp,
-    AboutPage,
-    AccountPage,
-    ProductsListPage,
-    LoginPage,
-    MapPage,
-    PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
-    SessionDetailPage,
-    SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
-    TabsPage,
-    TutorialPage,
-    SupportPage
+    AllPages
   ],
   imports: [
     BrowserModule,
     HttpModule,
     AngularFireAuthModule,
+    CalendarModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
@@ -121,21 +115,7 @@ firebase.initializeApp(config);
   bootstrap: [IonicApp],
   entryComponents: [
     ConferenceApp,
-    AboutPage,
-    ProductsListPage,
-    AccountPage,
-    LoginPage,
-    MapPage,
-    PopoverPage,
-    SchedulePage,
-    ScheduleFilterPage,
-    SessionDetailPage,
-    SignupPage,
-    SpeakerDetailPage,
-    SpeakerListPage,
-    TabsPage,
-    TutorialPage,
-    SupportPage
+    AllPages
   ],
   providers: [
     { provide: ErrorHandler, useClass: IonicErrorHandler },

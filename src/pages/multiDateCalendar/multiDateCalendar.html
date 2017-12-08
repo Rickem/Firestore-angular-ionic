@@ -1,0 +1,15 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Multi Date Calendar</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="map-page">
+    <ion-calendar [(ngModel)]="date" (onChange)="onChange($event)"  #mycal [options]="optionsMulti" [type]="type" [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+    <ion-calendar [(ngModel)]="dateRange" [options]="optionsRange" [type]="type" [format]="'YYYY-MM-DD'">
+    </ion-calendar>
+</ion-content>
