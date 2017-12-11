@@ -18,6 +18,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { CalendarModule } from "ion2-calendar";
 
+import { DatePickerModule } from 'ion-datepicker-3';
 import { ConferenceApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -50,6 +51,8 @@ import { SearchPipe, TagSearchPipe } from '../pipes/search';
 import { DateComparePipe } from '../pipes/date';
 import { OrderByPipe } from '../pipes/sort';
 
+import { LimitToDirective } from '../directives/manipulateDiv';
+
 export const AllPipes = [
   OmangIdPipe, SearchPipe, DateComparePipe, TagSearchPipe, OrderByPipe
 ];
@@ -78,6 +81,7 @@ firebase.initializeApp(config);
   declarations: [
     AllPipes,
     ConferenceApp,
+    LimitToDirective,
     AllPages
   ],
   imports: [
@@ -85,6 +89,7 @@ firebase.initializeApp(config);
     HttpModule,
     AngularFireAuthModule,
     CalendarModule,
+    DatePickerModule,
     AngularFirestoreModule.enablePersistence(),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,

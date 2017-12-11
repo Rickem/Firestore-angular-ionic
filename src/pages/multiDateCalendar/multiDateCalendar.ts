@@ -1,10 +1,10 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
 import { ConferenceData } from '../../providers/conference-data';
-import { CalendarComponentOptions,  } from 'ion2-calendar'
+import { CalendarComponent, CalendarComponentOptions, } from 'ion2-calendar'
 
 import { Platform } from 'ionic-angular';
 
-
+import { DatePickerDirective, DatePickerComponent } from 'ion-datepicker-3';
 declare var google: any;
 
 
@@ -13,12 +13,16 @@ declare var google: any;
     templateUrl: 'multiDateCalendar.html'
 })
 export class MultiDateCalendarPage {
-
+    @ViewChild(CalendarComponent) mycal: CalendarComponent;
     date: string;
+    @ViewChild(DatePickerDirective) private datepickerDirective: DatePickerDirective;
+    modalOptions : DatePickerComponent;
+
 
     dateDiff = 4;
     dateMulti: string[];
     SelectedDates = [];
+    onChangeSet = true;
     type: 'string'; // 'string' | 'js-date' | 'moment' | 'time' | 'object'
     optionsMulti: CalendarComponentOptions = {
         pickMode: 'multi',
@@ -33,11 +37,15 @@ export class MultiDateCalendarPage {
 
 
     constructor() { }
+    public setDate(heck) {
+        console.log(heck)
+    }
 
     monthChange(changes) {
         console.log(changes)
-      }
+    }
     onChange($event) {
+        this.onChangeSet = false;
         console.log($event);
         let dateValue = new Date($event[$event.length - 1]);
         console.log(dateValue);
@@ -45,8 +53,9 @@ export class MultiDateCalendarPage {
 
         this.optionsMulti.from = this.subtractDays(new Date($event[$event.length - 1]), this.dateDiff);
         this.optionsMulti.to = this.addDays(new Date($event[$event.length - 1]), this.dateDiff);
-        this.optionsMulti.disableWeeks = [0,6];
+        this.optionsMulti.disableWeeks = [0, 6];
         console.log(this.optionsMulti);
+        this.onChangeSet = true;
     }
     addDays(date, days) {
         let tempDate = date;

@@ -8,8 +8,18 @@
 </ion-header>
 
 <ion-content class="map-page">
-    <ion-calendar [(ngModel)]="date" (onChange)="onChange($event)"  #mycal [options]="optionsMulti" [type]="type" [format]="'YYYY-MM-DD'">
+
+    <span ion-datepicker (ionChanged)="setDate($event);" [value]="localDate" [min]="localDate" clear class="ScheduleDate">
+        <span>{{localDate | date}}
+            <ion-icon name="clipboard" item-left></ion-icon>
+        </span>
+    </span>
+
+    <ion-calendar *ngIf="onChangeSet" [(ngModel)]="date" (onChange)="onChange($event)" cal-change #mycal [options]="optionsMulti"
+        [type]="type" [format]="'YYYY-MM-DD'">
     </ion-calendar>
     <ion-calendar [(ngModel)]="dateRange" [options]="optionsRange" [type]="type" [format]="'YYYY-MM-DD'">
     </ion-calendar>
+
+
 </ion-content>

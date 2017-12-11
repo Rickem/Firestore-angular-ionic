@@ -1,73 +1,47 @@
 page-products-list {
-  .scroll-content {
-    background: #EDEDED;
-  }
-
-  .speaker-card {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
-    ion-card-content {
-      flex: 1 1 auto;
+    .scroll-content {
+        background: #EDEDED;
     }
-  }
-
-  // Todo: remove when this issue https://github.com/ionic-team/ionic/issues/11212 is fixed
-  @media(min-width: 769px) {
     .speaker-card {
-      height: 370px;
-    }
-  }
-
-  .speaker-card ion-card-header .item {
-    padding: 4px 16px;
-  }
-
-  .speaker-card ion-card-content {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-
-.website-listing {
-    padding: 6px;
-    text-align: center;
-    img {
-        width: 80px;
-        margin: 0 auto;
-    }
-    .col{
-      min-width: 100px;
-    }
-    ion-card {
-        margin: 0;
-        height: 100px;
-        width: 100%;
-        box-shadow:none;
-        border:1px solid #ddd;
-        text-align: center;
+        height: 100%;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        color: #fff;
-        background: color($colors, primary);
-        &.primary {
-            background: color($colors, secondary);
+        flex-direction: column;
+        ion-card-content {
+            flex: 1 1 auto;
         }
-        span {
-            display: block;
-            text-align: center;
-            width: 100%;
-            img {
-                max-height: 30px;
-                margin-bottom: 7px;
-                margin-top: 8px;
-                &[noscale] {
-                    max-height: none;
-                }
+    } // Todo: remove when this issue https://github.com/ionic-team/ionic/issues/11212 is fixed
+    @media(min-width: 769px) {
+        .speaker-card {
+            height: 370px;
+        }
+    }
+    .speaker-card ion-card-header .item {
+        padding: 4px 16px;
+    }
+    .speaker-card ion-card-content {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .scroll-enable {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+        .col {
+            flex: 0 0 calc(33.33% - 15px);
+            max-width: calc(33.33% - 15px);
+            @media screen and (max-width: 359px) {
+                flex: 0 0 calc(50% - 25px);
+                max-width: calc(50% - 25px);
+            }
+        }
+        .card {
+            padding: 5px;
+            height: auto;
+            min-height: 100%;
+            span {
+                font-size: 12px;
             }
         }
     }
-}
 }
